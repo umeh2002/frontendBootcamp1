@@ -1,60 +1,26 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { signIn } from "../Utils/AUthApi";
-import { useDispatch } from "react-redux";
-import { signInUser } from "../Global/authGlobal";
+import sign from "../Assets/sign.jpg"
 
 const Signin = () => {
-  const nagivate = useNavigate();
-  const dispatch = useDispatch();
-
-  const model = yup.object({
-    email: yup.string().required(),
-    password: yup.string().required(),
-  });
-
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({ resolver: yupResolver(model) });
-
-  const onSubmit = handleSubmit(async (res: any) => {
-    signIn(res).then((res: any) => {
-      console.log(res)
-      dispatch(signInUser(res));
-      nagivate("/");
-    });
-  });
   return (
     <Container>
       <Main>
-        <Card onSubmit={onSubmit}>
-          <Title>Sign In</Title>
-          <Holder>
-            <Nam>email</Nam>
-            <Input placeholder="Email" {...register("email")} />
-            {errors.email && <Err>enter email</Err>}
-            <Nam>password</Nam>
-            <Input placeholder="Password" type="password"{...register("password")} />
-            {errors.password && <Err>enter password</Err>}
-          </Holder>
+        <Right>
+          <img src={sign} alt="" />
+        </Right>
+        <Left>
+          <Title>Welcome back</Title>
+          <Divs1>
+            <Nam>Email</Nam>
+            <Input placeholder="enter your email" />
 
-            <Botton type="submit">Sign in</Botton>
-          <Tst>
-            <Txt1>Don't have an account ?</Txt1>
-            <Link
-              to="/register"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <Txt2>Sign up</Txt2>
-            </Link>
-          </Tst>
-        </Card>
+            <Nam>Password</Nam>
+            <Input placeholder="enter your password" type="pasword"/>
+          </Divs1>
+          <Button>Sign In</Button>
+          <Txt2>Don't have an account ?: <span>Sign Up</span></Txt2>
+        </Left>
       </Main>
     </Container>
   );
@@ -62,111 +28,99 @@ const Signin = () => {
 
 export default Signin;
 
-const Nam =styled.div`
-margin-top: 5px;
-font-size: 18px;
+const Txt2 =styled.div`
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px 0px;
 
+  span{
+    font-weight: 700;
+    color: blue;
+    font-size: 15px;
+    cursor: pointer;
+  }
 `
 
-const Err = styled.div`
-  font-size: 12px;
-  display: flex;
-  justify-content: flex-end;
-  color: red;
-  margin: 0px 20px;
-`;
+const Button =styled.button`
+margin: 10px 0px;
+width: 90%;
+height: 30px;
+background-color: dodgerblue;
+border: 1px solid;
+border-radius: 10px;
+outline: none;
+transition: all 400ms;
 
-const Txt2 = styled.div`
-  font-size: 20px;
-  margin-left: 10px;
-  margin-bottom: 3px;
-  font-weight: 500;
-  transition: all 400ms;
+:hover{
+  cursor: pointer;
+}
+`
 
-  :hover {
-    cursor: pointer;
-  }
-`;
 
-const Txt1 = styled.div`
-  font-size: 15px;
-  font-weight: 400;
-`;
-
-const Tst = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0px;
-`;
-
-const Botton = styled.button`
-  width: 90%;
-  height: 30px;
-  border: 1px solid black;
-  border-radius: 10px;
-  outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  color: white;
-  transition: all 400ms;
-  margin: 20px 0px;
-  margin-left: 15px;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
-
-// const Txt =styled.div`
-// padding: 10px;
-// font-weight: 400;
-// font-size: 15px;
-// span{
-//   font-weight: 700;
-//   cursor: pointer;
-// }
-// `
 
 const Input = styled.input`
-  width: 270px;
+  width: 300px;
   height: 30px;
-  border-radius: 5px;
-  margin-top: 10px;
-  padding-left: 10px;
-  border: 1px solid;
   outline: none;
+  border: 1px solid silver;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-bottom: 5px;
   ::placeholder {
-    font-size: 15px;
-    color: gray;
+    font-size: 13px;
+    color: grey;
   }
 `;
 
-const Holder = styled.div`
-  margin-left: 5px;
+const Nam = styled.div`
+  font-size: 15px;
+  font-weight: 500;
+  margin: 5px 0px;
 `;
+
+const Divs1 = styled.div`
+  margin: 20px 0px;
+`;
+
 
 const Title = styled.div`
+  font-size: 20px;
   text-align: center;
-  font-size: 25px;
-  font-weight: 700;
-  margin: 10px 0px;
+  font-weight: 600;
+  margin: 20px 0px;
 `;
 
-const Card = styled.form`
-  width: 300px;
-  min-height: 200px;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 0px 10px;
+
+const Left = styled.div`
+  width: 50%;
+  height: 100%;
+`;
+
+const Right = styled.div`
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+
+  img{
+    height: 50vh;
+    width: 90%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
 `;
 
 const Main = styled.div`
+  width: 700px;
+  min-height: 300px;
+  background-color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding-right: 10px;
 `;
 
 const Container = styled.div`
@@ -175,5 +129,5 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightgrey;
+  background-color: grey;
 `;

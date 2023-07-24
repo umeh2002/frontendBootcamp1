@@ -74,6 +74,10 @@ const Main = styled.div`
   justify-content: space-between;
   align-items: center;
   /* background-color: red; */
+  /* @media screen and (min-width: 320px){
+    display: flex;
+    flex-direction: column;
+  } */
 `;
 
 const Container = styled.div`

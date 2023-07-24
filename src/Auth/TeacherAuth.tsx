@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import {FcGoogle} from "react-icons/fc"
+import {FaFacebookF} from "react-icons/fa"
 
 const TeacherAuth = () => {
   return (
@@ -7,8 +9,15 @@ const TeacherAuth = () => {
     <Main>
 <Card>
   <Title>Sign up as a teacher</Title>
-  <Botton1>Sign up with google</Botton1>
+<Divs1>
+  <Icon><FcGoogle size={30}/></Icon>
+<Botton1>Sign up with google</Botton1>
+</Divs1>
+<Divs2>
+  
+<Icon1><FaFacebookF size={25} /></Icon1>
   <Botton2>Sign up with facebook</Botton2>
+</Divs2>
   <Divs>
     <Line/>
       <Or> or</Or>
@@ -17,9 +26,9 @@ const TeacherAuth = () => {
   <Holder>
     <Nam>Full name</Nam>
     <Input placeholder='name' />
-    <Nam>email</Nam>
+    <Nam>Email</Nam>
     <Input placeholder='email' />
-    <Nam>password</Nam>
+    <Nam>Password</Nam>
     <Input type="password" placeholder='password'/>
   </Holder>
   <Txt>By signing in your agree to the <span> Term</span> and <span>Condition</span></Txt>
@@ -32,6 +41,32 @@ const TeacherAuth = () => {
 }
 
 export default TeacherAuth
+
+const Icon1 =styled.div`
+position: absolute;
+left: 575px;
+z-index: 5;
+margin-top: 5px;
+`
+
+const Divs2 =styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+
+const Divs1 =styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+
+const Icon =styled.div`
+position: absolute;
+left: 575px;
+z-index: 5;
+margin-top: 3px;
+`
 
 const Botton3=styled.div`
 width: 90%;
@@ -80,6 +115,7 @@ margin-top: 10px;
 
 const Holder =styled.div`
 margin-bottom: 20px;
+font-size: 15px;
 `
 
 const Or =styled.div`
@@ -100,7 +136,7 @@ background-color: silver;
 const Divs =styled.div`
 display: flex;
 align-items: center;
-margin: 20px 0px;
+margin: 10px 0px;
 `
 
 const Botton2 =styled.div`
@@ -110,6 +146,7 @@ background-color: #4285F4;
 display: flex;
 justify-content: center;
 align-items: center;
+position: relative;
 border-radius: 10px;
 margin: 10px 10px;
 color: white;
@@ -127,6 +164,7 @@ background-color: #4285F4;
 display: flex;
 justify-content: center;
 align-items: center;
+position: relative;
 border-radius: 10px;
 margin: 10px 10px;
 color: white;

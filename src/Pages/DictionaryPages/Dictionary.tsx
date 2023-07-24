@@ -20,7 +20,7 @@ const Dictionary = () => {
 
   useEffect(() => {
     Data(text)
-    }, [data])
+    }, )
 
   
 
@@ -40,7 +40,7 @@ const Dictionary = () => {
         Array.isArray(data) ? ( 
           data?.map((props:any)=>(
             <>
-               <h3 style={{fontSize:"40px",fontFamily:"poppins",margin:"0"}}>{props?.word}</h3>
+               <h3 style={{fontSize:"30px",fontFamily:"poppins",margin:"0"}}>{props?.word}</h3>
           <Icon>
               {/* <FcSpeaker size={30}/> */}
               <audio src={props?.phonetics[0]?.audio} controls   preload="auto" ></audio>
@@ -95,9 +95,29 @@ const Down = styled.div`
   width: 700px;
   height: 75vh;
   margin-top: 20px;
-  background-color: purple;
+  background-color: white;
   color: white;
-  padding-left: 20px;
+  padding: 10px 10px;
+  color: black;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+
+::-webkit-scrollbar {
+  width: 10px;
+  height :20px ;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 5px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+}
+
 `;
 
 const Search = styled.button`
@@ -145,4 +165,5 @@ const Container = styled.div`
   height: 90vh;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 `;
